@@ -22,7 +22,6 @@ const countdown = () => {
         clearInterval(x);
         document.getElementById('timer').innerText = "Happy New Year!";
         document.getElementById('fireworksSound').play();
-        stopYouTubeVideo();
         startFireworks();
     }
 };
@@ -33,15 +32,4 @@ const startFireworks = () => {
     fireworks.start();
 };
 
-const stopYouTubeVideo = () => {
-    const iframe = document.querySelector('iframe');
-    iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-};
-
 let x = setInterval(countdown, 1000);
-
-// Auto-play YouTube video on page load
-window.addEventListener('load', () => {
-    const iframe = document.querySelector('iframe');
-    iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-});
