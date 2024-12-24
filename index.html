@@ -26,35 +26,30 @@
     <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Happy+New+Year+2025">
 
     <style>
-        /* Additional styles to embed YouTube video as background */
+        /* Additional styles to embed Spotify player */
         body {
             margin: 0;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
         }
-        .video-background {
+        .spotify-player {
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .video-foreground {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            height: 80px;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <div class="video-background">
-        <div class="video-foreground">
-            <iframe id="youtube-video" src="https://www.youtube.com/embed/mzU5qnnff_I?autoplay=1&mute=1&loop=1&playlist=mzU5qnnff_I&enablejsapi=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
     <div class="countdown">
         <h1>Countdown to New Year 2025</h1>
         <div id="timer">
@@ -66,6 +61,7 @@
     </div>
     <div id="fireworks"></div>
     <audio id="fireworksSound" src="fireworks.mp3" preload="auto"></audio>
+    <iframe class="spotify-player" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1YMPNuWL6BX" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     <script src="script.js"></script>
 </body>
 </html>
