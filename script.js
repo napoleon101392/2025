@@ -115,6 +115,7 @@ const startCountdown = () => {
 
 document.getElementById('startButton').addEventListener('click', () => {
     document.getElementById('startButton').classList.add('hidden');
+    document.getElementById('disclaimerMessage').style.display = 'none';
     startCountdown();
 });
 
