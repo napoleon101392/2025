@@ -1,3 +1,6 @@
+If you like this project, please consider buying me a coffee:
+[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://buymeacoffee.com/napoleon10i)
+
 # Countdown to New Year
 
 This repository contains a countdown website for New Year with animations and fireworks sounds. The website is hosted using GitHub Pages.
