@@ -123,10 +123,14 @@ document.getElementById('startButton').addEventListener('click', () => {
 document.getElementById('celebrateNowButton').addEventListener('click', function() {
     // Stop the countdown timer if running
     clearInterval(countdownInterval);
+    // Display "Happy New Year!" message
     document.getElementById('timer').innerText = "Happy New Year!";
     document.getElementById('countdownHeading').innerText = "";
+    // Remove buttons and disclaimer message
     document.getElementById('startButton').remove();
     document.getElementById('celebrateNowButton').remove();
+    document.getElementById('disclaimerMessage').style.display = 'none';
+    // Execute fireworks immediately
     startFireworks();
 });
 
