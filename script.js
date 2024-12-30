@@ -115,6 +115,7 @@ const startCountdown = () => {
 
 document.getElementById('startButton').addEventListener('click', () => {
     document.getElementById('startButton').classList.add('hidden');
+    document.getElementById('celebrateNowButton').classList.add('hidden');
     document.getElementById('disclaimerMessage').style.display = 'none';
     startCountdown();
 });
@@ -122,7 +123,10 @@ document.getElementById('startButton').addEventListener('click', () => {
 document.getElementById('celebrateNowButton').addEventListener('click', function() {
     // Stop the countdown timer if running
     clearInterval(countdownInterval);
-    // Execute fireworks immediately
+    document.getElementById('timer').innerText = "Happy New Year!";
+    document.getElementById('countdownHeading').innerText = "";
+    document.getElementById('startButton').remove();
+    document.getElementById('celebrateNowButton').remove();
     startFireworks();
 });
 
