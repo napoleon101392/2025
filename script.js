@@ -113,6 +113,16 @@ const startCountdown = () => {
     countdownInterval = setInterval(countdown, 1000);
 };
 
+const celebrateNow = () => {
+    clearInterval(countdownInterval);
+    document.getElementById('timer').innerText = "Happy New Year!";
+    document.getElementById('countdownHeading').innerText = "";
+    document.getElementById('disclaimerMessage').style.display = 'none';
+    document.getElementById('startButton').remove();
+    document.getElementById('celebrateNowButton').remove();
+    startFireworks();
+};
+
 document.getElementById('startButton').addEventListener('click', () => {
     document.getElementById('startButton').classList.add('hidden');
     document.getElementById('celebrateNowButton').classList.add('hidden');
@@ -120,19 +130,7 @@ document.getElementById('startButton').addEventListener('click', () => {
     startCountdown();
 });
 
-document.getElementById('celebrateNowButton').addEventListener('click', function() {
-    // Stop the countdown timer if running
-    clearInterval(countdownInterval);
-    // Display "Happy New Year!" message
-    document.getElementById('timer').innerText = "Happy New Year!";
-    document.getElementById('countdownHeading').innerText = "";
-    // Remove buttons and disclaimer message
-    document.getElementById('startButton').remove();
-    document.getElementById('celebrateNowButton').remove();
-    document.getElementById('disclaimerMessage').style.display = 'none';
-    // Execute fireworks immediately
-    startFireworks();
-});
+document.getElementById('celebrateNowButton').addEventListener('click', celebrateNow);
 
 // Set the Spotify player source dynamically
 const musicUrl = getMusicFromUrl();
