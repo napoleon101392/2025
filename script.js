@@ -114,12 +114,16 @@ const startCountdown = () => {
 };
 
 const celebrateNow = () => {
+    document.getElementById('startButton').classList.add('hidden');
+    document.getElementById('celebrateNowButton').classList.add('hidden');
+    document.getElementById('disclaimerMessage').style.display = 'none';
+
+    document.getElementById('countdownContainer').classList.remove('hidden');
+
     clearInterval(countdownInterval);
     document.getElementById('timer').innerText = "Happy New Year!";
+    
     document.getElementById('countdownHeading').innerText = "";
-    document.getElementById('disclaimerMessage').style.display = 'none';
-    document.getElementById('startButton').remove();
-    document.getElementById('celebrateNowButton').remove();
     startFireworks();
 };
 

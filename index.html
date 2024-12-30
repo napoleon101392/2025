@@ -49,12 +49,6 @@
         .hidden {
             display: none;
         }
-        .coffee-link {
-            margin-top: 10px;
-        }
-        #startButton {
-            /* margin-top: 20px; */ /* Removed margin-top */
-        }
     </style>
 </head>
 <body>
@@ -75,16 +69,16 @@
             </div>
         </div>
     </div>
-    <div class="coffee-link">
+    <button id="startButton" class="button">Start Countdown</button>
+    <button id="celebrateNowButton" class="button">Celebrate Now</button> <!-- New button added -->
+    <p id="disclaimerMessage">Note: By pressing 'Start Countdown', the countdown will begin, and the fireworks display will start after the countdown reaches zero. Press 'Celebrate Now' to start the fireworks immediately.</p>
+    <div id="fireworks"></div>
+    <audio id="fireworksSound" src="https://napoleon101392.github.io/new-year/fireworks.mp3" preload="auto" loop></audio>
+    <div class="coffee-link" style="position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);">
         <a id="coffeeLink" href="https://buymeacoffee.com/napoleon10i" target="_blank">
             <img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me a Coffee">
         </a>
     </div>
-    <button id="startButton">Start Countdown</button>
-<button id="celebrateNowButton">Celebrate Now</button> <!-- New button added -->
-<p id="disclaimerMessage">Note: By pressing 'Start Countdown', the countdown will begin, and the fireworks display will start after the countdown reaches zero. Press 'Celebrate Now' to start the fireworks immediately.</p>
-    <div id="fireworks"></div>
-    <audio id="fireworksSound" src="https://napoleon101392.github.io/new-year/fireworks.mp3" preload="auto" loop></audio>
     <iframe
         id="spotifyPlayer"
         class="spotify-player"

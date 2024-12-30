@@ -73,7 +73,7 @@ body {
 }
 
 /* Styles for the Start Countdown button */
-#startButton {
+.button {
     background-color: #ffcc00; /* Festive gold color */
     color: #000; /* Black text color */
     font-size: 1.5em; /* Larger font size */
@@ -87,7 +87,7 @@ body {
     margin-top: 20px; /* Add margin for spacing */
 }
 
-#startButton:hover {
+.button:hover {
     transform: scale(1.1); /* Slightly enlarge on hover */
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Stronger glow on hover */
 }
