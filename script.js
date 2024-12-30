@@ -119,6 +119,13 @@ document.getElementById('startButton').addEventListener('click', () => {
     startCountdown();
 });
 
+document.getElementById('celebrateNowButton').addEventListener('click', function() {
+    // Stop the countdown timer if running
+    clearInterval(countdownInterval);
+    // Execute fireworks immediately
+    startFireworks();
+});
+
 // Set the Spotify player source dynamically
 const musicUrl = getMusicFromUrl();
 updateSpotifyPlayer(musicUrl);
