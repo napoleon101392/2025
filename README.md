@@ -18,7 +18,7 @@ Check out the live demo [here](https://napoleon101392.github.io/new-year).
 You can specify the year and music URL using query parameters:
 
 - `year`: The year to count down to (default is the next year).
-- `music`: The URL of the Spotify playlist or track to play.
+- `music`: The embed src URL of the Spotify playlist or track to play.
 
 Example:
 `
