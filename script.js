@@ -5,8 +5,9 @@ const getYearFromUrl = () => {
 };
 
 const getMusicFromUrl = () => {
+    const defaultMusicUrl = 'https://open.spotify.com/embed/playlist/5xAAZCzx1MEAGsaf2hWbXD?utm_source=generator&theme=0';
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('music') || 'https://open.spotify.com/embed/playlist/37i9dQZF1DX1YMPNuWL6BX';
+    return urlParams.get('music') || defaultMusicUrl;
 };
 
 const updateHeading = (year) => {
