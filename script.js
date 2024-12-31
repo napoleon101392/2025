@@ -1,5 +1,28 @@
+const getYearFromUrl = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const year = urlParams.get('year');
+    return year ? parseInt(year, 10) : new Date().getFullYear() + 1;
+};
+
+const getMusicFromUrl = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('music') || 'https://open.spotify.com/embed/playlist/37i9dQZF1DX1YMPNuWL6BX';
+};
+
+const updateHeading = (year) => {
+    const headingElement = document.getElementById('countdownHeading');
+    headingElement.innerText = `Countdown to New Year ${year}`;
+};
+
+const updateSpotifyPlayer = (musicUrl) => {
+    const spotifyPlayer = document.getElementById('spotifyPlayer');
+    spotifyPlayer.src = musicUrl;
+};
+
 const countdown = () => {
-    const countDate = new Date('Jan 1, 2025 00:00:00').getTime();
+    const year = getYearFromUrl();
+    updateHeading(year);
+    const countDate = new Date(`Jan 1, ${year} 00:00:00`).getTime();
     const now = new Date().getTime();
     const gap = countDate - now;
 
@@ -13,23 +36,77 @@ const countdown = () => {
     const textMinute = Math.floor((gap % hour) / minute);
     const textSecond = Math.floor((gap % minute) / second);
 
-    document.getElementById('days').innerText = textDay;
-    document.getElementById('hours').innerText = textHour;
-    document.getElementById('minutes').innerText = textMinute;
-    document.getElementById('seconds').innerText = textSecond;
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    const daysLabel = document.getElementById('days-label');
+    const hoursLabel = document.getElementById('hours-label');
+    const minutesLabel = document.getElementById('minutes-label');
+    const secondsLabel = document.getElementById('seconds-label');
+
+    if (textDay > 0) {
+        daysElement.innerText = textDay;
+        daysElement.style.display = 'inline';
+        daysLabel.style.display = 'inline';
+    } else {
+        daysElement.style.display = 'none';
+        daysLabel.style.display = 'none';
+    }
+
+    if (textHour > 0 || textDay > 0) {
+        hoursElement.innerText = textHour;
+        hoursElement.style.display = 'inline';
+        hoursLabel.style.display = 'inline';
+    } else {
+        hoursElement.style.display = 'none';
+        hoursLabel.style.display = 'none';
+    }
+
+    if (textMinute > 0 || textHour > 0 || textDay > 0) {
+        minutesElement.innerText = textMinute;
+        minutesElement.style.display = 'inline';
+        minutesLabel.style.display = 'inline';
+    } else {
+        minutesElement.style.display = 'none';
+        minutesLabel.style.display = 'none';
+    }
+
+    secondsElement.innerText = textSecond;
+
+    if (textDay === 0 && textHour === 0 && textMinute === 0) {
+        secondsLabel.style.display = 'none';
+    } else {
+        secondsLabel.style.display = 'inline';
+    }
 
     if (gap <= 0) {
-        clearInterval(x);
+        clearInterval(countdownInterval);
         document.getElementById('timer').innerText = "Happy New Year!";
-        document.getElementById('fireworksSound').play();
         startFireworks();
     }
 };
 
 const startFireworks = () => {
     const container = document.getElementById('fireworks');
-    const fireworks = new Fireworks(container);
+    const fireworks = new Fireworks.default(container); // Use Fireworks.default if using ES module
+    const fireworksSound = document.getElementById('fireworksSound');
+    fireworksSound.loop = true; // Ensure the sound loops
+    fireworksSound.play();
     fireworks.start();
 };
 
-let x = setInterval(countdown, 1000);
+const startCountdown = () => {
+    document.getElementById('countdownContainer').classList.remove('hidden');
+    countdown();
+    countdownInterval = setInterval(countdown, 1000);
+};
+
+document.getElementById('startButton').addEventListener('click', () => {
+    document.getElementById('startButton').classList.add('hidden');
+    startCountdown();
+});
+
+// Set the Spotify player source dynamically
+const musicUrl = getMusicFromUrl();
+updateSpotifyPlayer(musicUrl);

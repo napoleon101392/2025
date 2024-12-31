@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown to 2025 - New Year</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Join us in counting down to New Year 2025 with fireworks and celebration.">
@@ -47,21 +48,33 @@
             height: 80px;
             z-index: 1;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="countdown">
-        <h1>Countdown to New Year 2025</h1>
+    <div id="countdownContainer" class="countdown hidden">
+        <h1 id="countdownHeading">Countdown to New Year</h1>
         <div id="timer">
-            <span id="days"></span> Days 
-            <span id="hours"></span> Hours 
-            <span id="minutes"></span> Minutes 
-            <span id="seconds"></span> Seconds
+            <div class="time-unit">
+                <span id="days" class="number"></span> <span id="days-label">Days</span>
+            </div>
+            <div class="time-unit">
+                <span id="hours" class="number"></span> <span id="hours-label">Hours</span>
+            </div>
+            <div class="time-unit">
+                <span id="minutes" class="number"></span> <span id="minutes-label">Minutes</span>
+            </div>
+            <div class="time-unit">
+                <span id="seconds" class="number"></span> <span id="seconds-label">Seconds</span>
+            </div>
         </div>
     </div>
+    <button id="startButton">Start Countdown</button>
     <div id="fireworks"></div>
-    <audio id="fireworksSound" src="fireworks.mp3" preload="auto"></audio>
-    <iframe class="spotify-player" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1YMPNuWL6BX" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <audio id="fireworksSound" src="fireworks.mp3" preload="auto" loop></audio>
+    <iframe id="spotifyPlayer" class="spotify-player" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1YMPNuWL6BX" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     <script src="script.js"></script>
 </body>
 </html>
