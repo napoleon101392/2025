@@ -1,3 +1,5 @@
+let countdownInterval;
+
 const getYearFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const year = urlParams.get('year');
@@ -20,23 +22,7 @@ const updateSpotifyPlayer = (musicUrl) => {
     spotifyPlayer.src = musicUrl;
 };
 
-const countdown = () => {
-    const year = getYearFromUrl();
-    updateHeading(year);
-    const countDate = new Date(`Jan 1, ${year} 00:00:00`).getTime();
-    const now = new Date().getTime();
-    const gap = countDate - now;
-
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-
-    const textDay = Math.floor(gap / day);
-    const textHour = Math.floor((gap % day) / hour);
-    const textMinute = Math.floor((gap % hour) / minute);
-    const textSecond = Math.floor((gap % minute) / second);
-
+const updateCountdownDisplay = (textDay, textHour, textMinute, textSecond) => {
     const daysElement = document.getElementById('days');
     const hoursElement = document.getElementById('hours');
     const minutesElement = document.getElementById('minutes');
@@ -80,12 +66,36 @@ const countdown = () => {
     } else {
         secondsLabel.style.display = 'inline';
     }
+};
 
-    if (gap <= 0) {
+const countdown = () => {
+    const year = getYearFromUrl();
+    updateHeading(year);
+    const countDate = new Date(`Jan 1, ${year} 00:00:00`).getTime();
+    const now = new Date().getTime();
+    const gap = countDate - now;
+
+    const totalSeconds = Math.floor(gap / 1000);
+
+    if (totalSeconds <= 0) {
         clearInterval(countdownInterval);
         document.getElementById('timer').innerText = "Happy New Year!";
+        document.getElementById('countdownHeading').innerText = "";
         startFireworks();
+        return;
     }
+
+    const second = 1;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+
+    const textDay = Math.floor(totalSeconds / day);
+    const textHour = Math.floor((totalSeconds % day) / hour);
+    const textMinute = Math.floor((totalSeconds % hour) / minute);
+    const textSecond = Math.floor((totalSeconds % minute) / second);
+
+    updateCountdownDisplay(textDay, textHour, textMinute, textSecond);
 };
 
 const startFireworks = () => {

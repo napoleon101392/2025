@@ -70,3 +70,22 @@ body {
         font-size: 1.2em;
     }
 }
+
+/* Styles for the Start Countdown button */
+#startButton {
+    background-color: #ffcc00; /* Festive gold color */
+    color: #000; /* Black text color */
+    font-size: 1.5em; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    padding: 15px 30px; /* Padding for a larger button */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow effect */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+#startButton:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Stronger glow on hover */
+}
